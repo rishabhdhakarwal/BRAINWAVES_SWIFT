@@ -6,6 +6,6 @@ from django.conf.urls import url
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'client/', views.client),
-     url(r'^sg/', views.sg)
+     url(r'sg/', views.sg)
 
 ]

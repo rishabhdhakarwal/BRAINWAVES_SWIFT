@@ -13,10 +13,13 @@ export default class StocksService{
     }  
     
     getSG() {
-    	const url = `${API_URL}/sg`;
+    	const url = `${API_URL}/sg/`;
         return axios.get(url).then(response => response.data);
 	}
-	
+	getStatus(){
+        const url = `${API_URL}/status/`;
+        return axios.get(url).then(response => response.data);
+    }
 	
 
 

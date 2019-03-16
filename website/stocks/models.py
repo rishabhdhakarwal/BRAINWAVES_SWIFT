@@ -21,6 +21,7 @@ class ClientOneToOne(models.Model):
     field_57d = models.TextField(db_column=':57D', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it started with '_'.
     field_58a = models.TextField(db_column=':58A', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it started with '_'.
     field_24d = models.TextField(db_column=':24D', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it started with '_'.
+    
     class Meta:
         managed = False
         db_table = 'client_one_to_one'
@@ -46,9 +47,17 @@ class SgOneToOne(models.Model):
     field_57d = models.TextField(db_column=':57D', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it started with '_'.
     field_58a = models.TextField(db_column=':58A', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it started with '_'.
     field_24d = models.TextField(db_column=':24D', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it started with '_'.
-
+    
     class Meta:
         managed = False
         db_table = 'sg_one_to_one'
 
 
+class matched(models.Model):
+    client = models.ForeignKey(ClientOneToOne, on_delete=models.CASCADE)
+    sg = models.ForeignKey(SgOneToOne, on_delete=models.CASCADE)
+    status=models.TextField(null=False)
+
+    class Meta:
+        managed = False
+        db_table = 'status'

@@ -5,7 +5,7 @@ import  StocksService  from  './StocksService';
 const  stocksService  =  new  StocksService();
 
 
-class  ClientList  extends  Component {
+class  StatusList  extends  Component {
 
     constructor(props) {
         super(props);
@@ -16,14 +16,14 @@ class  ClientList  extends  Component {
     }
 
     componentDidMount() {
-    	var  self  =  this;
-    	stocksService.getClient().then(function (result) {
-        	self.setState({ stocks:  result.data, nextPageURL:  result.nextlink})
-    	});
+        var  self  =  this;
+        stocksService.getStatus().then(function (result) {
+            self.setState({ stocks:  result.data, nextPageURL:  result.nextlink})
+        });
     }
 
     
-	render() {
+    render() {
 
     return (
         <div  className="customers--list">
@@ -31,16 +31,20 @@ class  ClientList  extends  Component {
             <thead  key="thead">
             <tr>
                 
-                <th>ID</th>
-                <th>Our Reference</th>
+                <th>Client</th>
+                <th>GC</th>
+                <th>Status</th>
+
+
                 
             </tr>
             </thead>
             <tbody>
             {this.state.stocks.map( c  =>
             <tr  key={c.id}>
-                <td>{c.id}</td>
-                <td>{c.field_20}</td>
+                <td>{c.client}</td>
+                <td>{c.sg}</td>
+                <td>{c.status}</td>
                 
             </tr>)}
             </tbody>
@@ -51,7 +55,7 @@ class  ClientList  extends  Component {
         );
   }
 }
-export  default  ClientList;
+export  default  StatusList;
 
 
 

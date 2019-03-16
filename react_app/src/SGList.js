@@ -5,7 +5,7 @@ import  StocksService  from  './StocksService';
 const  stocksService  =  new  StocksService();
 
 
-class  ClientList  extends  Component {
+class  SGList  extends  Component {
 
     constructor(props) {
         super(props);
@@ -16,14 +16,14 @@ class  ClientList  extends  Component {
     }
 
     componentDidMount() {
-    	var  self  =  this;
-    	stocksService.getClient().then(function (result) {
-        	self.setState({ stocks:  result.data, nextPageURL:  result.nextlink})
-    	});
+        var  self  =  this;
+        stocksService.getSG().then(function (result) {
+            self.setState({ stocks:  result.data, nextPageURL:  result.nextlink})
+        });
     }
 
     
-	render() {
+    render() {
 
     return (
         <div  className="customers--list">
@@ -51,7 +51,7 @@ class  ClientList  extends  Component {
         );
   }
 }
-export  default  ClientList;
+export  default  SGList;
 
 
 

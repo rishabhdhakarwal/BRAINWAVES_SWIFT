@@ -24,7 +24,7 @@ def client(request):
         client = ClientOneToOne.objects.all()
 
         page = request.GET.get('page', 1)
-        paginator = Paginator(client, 50)
+        paginator = Paginator(client, 500)
         try:
             data = paginator.page(page)
         except PageNotAnInteger:
@@ -53,7 +53,7 @@ def sg(request):
         sg = SgOneToOne.objects.all()
 
         page = request.GET.get('page', 1)
-        paginator = Paginator(sg, 50)
+        paginator = Paginator(sg, 500)
         try:
             data = paginator.page(page)
         except PageNotAnInteger:
@@ -62,6 +62,35 @@ def sg(request):
             data = paginator.page(paginator.num_pages)
 
         serializer = SgSerializer(data,context={'request': request} ,many=True)
+        if data.has_next():
+            nextPage = data.next_page_number()
+        if data.has_previous():
+            previousPage = data.previous_page_number()
+
+        return Response({'data': serializer.data , 'count': paginator.count, 'numpages' : paginator.num_pages, 'nextlink': '/top_50/?page=' + str(nextPage), 'prevlink': '/api/userss/?page=' + str(previousPage)})
+
+
+@api_view(['GET'])
+def status(request):
+    
+    
+
+    if request.method == 'GET':
+        data = []
+        nextPage = 1
+        previousPage = 1
+        status = status.objects.all()
+
+        page = request.GET.get('page', 1)
+        paginator = Paginator(status, 500)
+        try:
+            data = paginator.page(page)
+        except PageNotAnInteger:
+            data = paginator.page(1)
+        except EmptyPage:
+            data = paginator.page(paginator.num_pages)
+
+        serializer = statusSerializer(data,context={'request': request} ,many=True)
         if data.has_next():
             nextPage = data.next_page_number()
         if data.has_previous():

@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Route, Link, withRouter } from "react-router-dom";
 import ClientList from "./StocksList";
-
+import SGList from "./SGList";
+import StatusList from "./status"; 
 import "./App.css";
 import { Button } from "react-bootstrap";
 
@@ -58,27 +59,25 @@ class BaseLayout extends React.Component {
           <Nav className="mr-auto">
             <Nav.Link>
               {" "}
-              <Link to="/">Top 50</Link>
+              <Link to="/client">ClientList</Link>
             </Nav.Link>
             <Nav.Link>
               {" "}
-              <Link to="/all">All Stocks</Link>
+              <Link to="/sg">SGList</Link>
             </Nav.Link>
-           
+           <Nav.Link>
+              {" "}
+              <Link to="/status">Status</Link>
+            </Nav.Link>
           </Nav>
           <Form inline onSubmit={this.handleSubmit}>
             <FormControl
               type="text"
-              placeholder="Search by Stock Symbol"
+              placeholder="Search by Reference"
               className="mr-sm-2"
               ref={this.serachInput}
             />
-            <FormControl
-              type="text"
-              placeholder="YYYY-MM-DD"
-              className="mr-sm-2"
-              ref={this.dateInput}
-            />
+           
             <Button variant="outline-info" onClick={this.handleSubmit}>
               Search
             </Button>
@@ -106,6 +105,8 @@ class BaseLayout extends React.Component {
           <div className="content">
             
             <Route path="/client" exact component={ClientList} />
+            <Route path="/sg" component={SGList} />
+            <Route path="/status" component={StatusList} />
             
            
           </div>
