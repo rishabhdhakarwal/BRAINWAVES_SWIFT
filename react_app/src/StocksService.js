@@ -7,22 +7,16 @@ export default class StocksService{
     constructor(){}
 
 
-    getStocks() {
-        const url = `${API_URL}/api/users/`;
+    getClient() {
+        const url = `${API_URL}/client/`;
         return axios.get(url).then(response => response.data);
     }  
-    getStocksByURL(link){
-        const url = `${API_URL}${link}`;
-        return axios.get(url).then(response => response.data);
-    }
-    getTop50() {
-    	const url = `${API_URL}/top_50`;
+    
+    getSG() {
+    	const url = `${API_URL}/sg`;
         return axios.get(url).then(response => response.data);
 	}
-	getStockHistory(query,query1) {
-    	const url = `${API_URL}/stock_history?query=${query}&query1=${query1}`;
-        return axios.get(url).then(response => response.data);
-	}
+	
 	
 
 

@@ -5,30 +5,24 @@ import  StocksService  from  './StocksService';
 const  stocksService  =  new  StocksService();
 
 
-class  StocksList  extends  Component {
+class  ClientList  extends  Component {
 
     constructor(props) {
         super(props);
         this.state  = {
-            stocks: [],
-            nextPageURL:  ''
+            stocks: []
         };
-        this.nextPage  =  this.nextPage.bind(this);
+        
     }
 
     componentDidMount() {
     	var  self  =  this;
-    	stocksService.getStocks().then(function (result) {
+    	stocksService.getClient().then(function (result) {
         	self.setState({ stocks:  result.data, nextPageURL:  result.nextlink})
     	});
     }
 
-    nextPage(){
-    	var  self  =  this;
-    	stocksService.getStocksByURL(this.state.nextPageURL).then((result) => {
-        	self.setState({ stocks:  result.data, nextPageURL:  result.nextlink})
-    	});
-	}
+    
 	render() {
 
     return (
@@ -37,36 +31,25 @@ class  StocksList  extends  Component {
             <thead  key="thead">
             <tr>
                 
-                <th>Date</th>
-                <th>Symbol</th>
-                <th>Open</th>
-                <th>Close</th>
-                <th>Low</th>
-                <th>High</th>
-                <th>Volume</th>
+                <th>ID</th>
+                
             </tr>
             </thead>
             <tbody>
             {this.state.stocks.map( c  =>
             <tr  key={c.id}>
-                <td>{c.date}</td>
-                <td>{c.symbol}</td>
-                <td>{c.open1}</td>
-                <td>{c.close}</td>
-                <td>{c.low}</td>
-                <td>{c.high}</td>
-                <td>{c.volume}  </td>
+                <td>{c.id}</td>
+                
             </tr>)}
             </tbody>
             </table>
-            <button  className="btn btn-primary" class="w3-margin-top w3-margin-bottom w3-button w3-green w3-round" onClick=  {  this.nextPage  }>Next</button>
-            
+           
  
         </div>
         );
   }
 }
-export  default  StocksList;
+export  default  ClientList;
 
 
 

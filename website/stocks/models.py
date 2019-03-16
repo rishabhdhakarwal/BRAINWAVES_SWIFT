@@ -51,3 +51,4 @@ class SgOneToOne(models.Model):
         managed = False
         db_table = 'sg_one_to_one'
 
+
