@@ -22,4 +22,4 @@ class SgSerializer(serializers.ModelSerializer):
 class statusSerializer(serializers.ModelSerializer):
     class Meta:
         model = matched
-        fields= ('client','sg','status')
+        fields= ('client.field20','sg.field20','status')

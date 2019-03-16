@@ -60,4 +60,4 @@ class matched(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'status'
+        db_table = 'stocks_matched'

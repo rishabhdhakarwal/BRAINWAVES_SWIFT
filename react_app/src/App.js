@@ -6,6 +6,7 @@ import SGList from "./SGList";
 import StatusList from "./status"; 
 import "./App.css";
 import { Button } from "react-bootstrap";
+import StocksHistory from "./stock_history";
 
 import {
   Nav,
@@ -26,7 +27,7 @@ class BaseLayout extends React.Component {
       stockData: []
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.dateInput = React.createRef();
+    
     this.serachInput = React.createRef();
   }
 
@@ -36,15 +37,12 @@ class BaseLayout extends React.Component {
 
     stocksService
       .getStockHistory(
-        this.serachInput.current.value,
-        this.dateInput.current.value
+        this.serachInput.current.value
       )
       .then(function(result) {
         console.log(result.data);
         self.props.history.push(
-          `/history/${self.serachInput.current.value}/${
-            self.dateInput.current.value
-          }`
+          `/history/${self.serachInput.current.value}`
         );
         self.setState({
           stockData: result.data
@@ -107,6 +105,12 @@ class BaseLayout extends React.Component {
             <Route path="/client" exact component={ClientList} />
             <Route path="/sg" component={SGList} />
             <Route path="/status" component={StatusList} />
+            <Route
+              path="/history"
+              render={props => (
+                <StocksHistory {...props} stockList={this.state.stockData} />
+              )}
+            />
             
            
           </div>

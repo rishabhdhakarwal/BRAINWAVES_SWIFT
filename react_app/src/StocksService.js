@@ -20,6 +20,10 @@ export default class StocksService{
         const url = `${API_URL}/status/`;
         return axios.get(url).then(response => response.data);
     }
+    getStockHistory(query) {
+        const url = `${API_URL}/stock_history?query=${query}`;
+        return axios.get(url).then(response => response.data);
+    }
 	
 
 
