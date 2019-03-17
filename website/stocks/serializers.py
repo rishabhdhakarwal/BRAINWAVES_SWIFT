@@ -20,6 +20,8 @@ class SgSerializer(serializers.ModelSerializer):
         	'field_53a','field_56','field_57d','field_58a','field_24d','id')
 
 class statusSerializer(serializers.ModelSerializer):
+    client = serializers.SlugRelatedField(slug_field='field_20', read_only=True)
+    sg = serializers.SlugRelatedField(slug_field='field_20', read_only=True)
     class Meta:
         model = matched
-        fields= ('client.field20','sg.field20','status')
+        fields= ('client','sg','status','id')

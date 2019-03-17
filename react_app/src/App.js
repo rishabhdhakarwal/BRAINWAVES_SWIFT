@@ -65,13 +65,13 @@ class BaseLayout extends React.Component {
             </Nav.Link>
            <Nav.Link>
               {" "}
-              <Link to="/status">Status</Link>
+              <Link to="/status">OnetoOne</Link>
             </Nav.Link>
           </Nav>
           <Form inline onSubmit={this.handleSubmit}>
             <FormControl
               type="text"
-              placeholder="Search by Reference"
+              placeholder="Search Client by Reference"
               className="mr-sm-2"
               ref={this.serachInput}
             />

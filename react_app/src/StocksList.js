@@ -33,6 +33,9 @@ class  ClientList  extends  Component {
                 
                 <th>ID</th>
                 <th>Our Reference</th>
+                <th>Party A</th>
+                <th>Party B</th>
+                <th>Contract Date</th>
                 
             </tr>
             </thead>
@@ -41,7 +44,9 @@ class  ClientList  extends  Component {
             <tr  key={c.id}>
                 <td>{c.id}</td>
                 <td>{c.field_20}</td>
-                
+                 <td>{c.field_87a}</td>
+                <td>{c.field_82a}</td>
+                <td>{c.field_30t}</td>
             </tr>)}
             </tbody>
             </table>

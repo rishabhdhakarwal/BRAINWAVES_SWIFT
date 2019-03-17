@@ -32,7 +32,10 @@ class  SGList  extends  Component {
             <tr>
                 
                 <th>ID</th>
-                <th>Our Reference</th>
+                <th>Reference</th>
+                <th>Party A</th>
+                <th>Party B</th>
+                <th>Contract Date</th>
                 
             </tr>
             </thead>
@@ -41,6 +44,9 @@ class  SGList  extends  Component {
             <tr  key={c.id}>
                 <td>{c.id}</td>
                 <td>{c.field_20}</td>
+                <td>{c.field_82a}</td>
+                <td>{c.field_87a}</td>
+                 <td>{c.field_30t}</td>
                 
             </tr>)}
             </tbody>

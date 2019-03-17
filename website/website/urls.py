@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'sg/', views.sg),
     url(r'status/', views.status),
     url(r'^stock_history', views.stock_history),
+    url(r'^make_matches/', views.make_matching),
 ]

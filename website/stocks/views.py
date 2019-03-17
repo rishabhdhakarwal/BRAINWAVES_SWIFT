@@ -124,3 +124,20 @@ def stock_history(request):
             previousPage = data.previous_page_number()
 
         return Response({'data': serializer.data , 'count': paginator.count, 'numpages' : paginator.num_pages, 'nextlink': '/history/?page=' + str(nextPage), 'prevlink': '/api/users/?page=' + str(previousPage)})
+
+@api_view(['GET'])
+def make_matching(request):
+    if request.method == "GET":
+        object_1 = SgOneToOne.objects.all()
+        object_2 = ClientOneToOne.objects.all()
+        
+
+        for x in range(len(object_1)):
+            obj1 = object_1[x]
+            obj2 = object_2[x]
+            
+            if (obj1.field_32b==obj2.field_33b) and (obj1.field_33b==obj2.field_32b) and (obj1.field_82a==obj2.field_87a) and (obj1.field_87a==obj2.field_82a) and (obj1.field_77h==obj2.field_77h) and (obj1.field_30t==obj2.field_30t) and (obj1.field_30v==obj2.field_30v) and (obj1.field_36==obj2.field_36) :
+                matched.objects.create(client=object_2[x], sg=object_1[x], status="Yes")
+            else:
+                matched.objects.create(client=object_2[x], sg=object_1[x], status="No")
+    return Response({})
